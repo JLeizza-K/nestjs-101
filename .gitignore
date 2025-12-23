@@ -1,0 +1,22 @@
+# Compilación
+/dist
+**/dist
+
+# Dependencias
+node_modules
+**/node_modules
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# NestJS específico
+.clean
+/terminated
