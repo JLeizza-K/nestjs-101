@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { CatsController } from '../providers/cats.controller.ts';
-import { CatsService } from '../providers/cats.controller.ts';
+import { CatsService } from '../providers/cats.service.ts';
 
 /**
  * A module is a class that is annotated with the @Module() decorator. 
@@ -13,7 +13,7 @@ import { CatsService } from '../providers/cats.controller.ts';
 @Module({
   controllers: [CatsController],
   providers: [CatsService],
-  export: [CatsService] // Any module that imports the CatsModule has access to the CatsService and will share the same instance with all other modules that import it as well.
+  exports: [CatsService] // Any module that imports the CatsModule has access to the CatsService and will share the same instance with all other modules that import it as well.
 })
 export class CatsModule {}
 
