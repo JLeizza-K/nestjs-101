@@ -21,11 +21,11 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('/filter')
-  filterUsers(@Query('age') age: number, @Query('level') level: string) {
-    return `This action returns all users filtered by age: ${age} and admin level: ${level}`;
-  }
-  ///age=28&level=administrator
+    @Get('/filter')
+    filterUsers(@Query('age') age: number, @Query('level') level: string) {
+      return `This action returns all users filtered by age: ${age} and admin level: ${level}`;
+    }
+    ///age=28&level=administrator
 
   @Get(':id')
   getUser(@Param('id', ParseIntPipe) id: number): User {

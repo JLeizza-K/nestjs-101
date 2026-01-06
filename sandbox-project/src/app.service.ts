@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { randomInt } from 'crypto';
+import { NotFoundException } from './not-found.exception';
 
 export type User = {
   id: number;
@@ -30,13 +31,13 @@ export class AppService {
       return user.id === id;
     });
     if (!findUser) {
-      throw new Error('No user matches the given id');
+      throw new NotFoundException();
     }
     return findUser;
   }
 
   createUser(name: string, email: string, password: number): User {
-    const newId = randomInt(4, 10);
+    const newId = 5;
 
     const newUser: User = {
       id: newId,
