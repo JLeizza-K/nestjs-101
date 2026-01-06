@@ -8,20 +8,25 @@ export type User = {
   password: number;
 };
 
-const users: Array<User> = [
-  { id: 1, name: 'Juan', email: 'juan@email.com', password: 1234 },
-  { id: 2, name: 'Helena', email: 'helena@email.com', password: 5678 },
-  { id: 3, name: 'Benjamin', email: 'benja@email.com', password: 9101 },
-  { id: 4, name: 'Celia', email: 'celia@email.com', password: 1112 },
-];
-
 @Injectable()
 export class AppService {
+  private readonly users: Array<User> = [
+    { id: 1, name: 'Juan', email: 'juan@email.com', password: 1234 },
+    { id: 2, name: 'Helena', email: 'helena@email.com', password: 5678 },
+    { id: 3, name: 'Benjamin', email: 'benja@email.com', password: 9101 },
+    { id: 4, name: 'Celia', email: 'celia@email.com', password: 1112 },
+  ];
+
+  getUsers(): Array<User> {
+    return this.users;
+  }
+
   getHello(): string {
     return 'Hello Academy 2026!';
   }
+
   getUser(id: number): User {
-    const findUser = users.find((user) => {
+    const findUser = this.users.find((user) => {
       return user.id === id;
     });
     if (!findUser) {
@@ -39,7 +44,7 @@ export class AppService {
       email,
       password,
     };
-    users.push(newUser);
+    this.users.push(newUser);
     return newUser;
   }
 }
