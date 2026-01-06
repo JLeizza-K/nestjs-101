@@ -1,7 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { BadRequestException } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { NotFoundException } from './not-found.exception';
+import { ValidationPipe } from './validation-pipe';
+import { createUserSchema } from './create-user.dto';
 
 describe('AppController', () => {
   let appController: AppController;
@@ -60,6 +63,19 @@ describe('AppController', () => {
         email: 'jorge@email.com',
         password: 5566,
       });
+    });
+    it('should throw an error with invalid DTO types', () => {
+      const pipe = new ValidationPipe(createUserSchema);
+
+      const invalidDTO = {
+        name: 1233,
+        email: 'jorge@email.com',
+        password: 'Jorge',
+      } as any;
+
+      expect(() => pipe.transform(invalidDTO, { type: 'body' })).toThrow(
+        BadRequestException,
+      );
     });
   });
 });
