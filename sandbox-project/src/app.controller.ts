@@ -9,15 +9,18 @@ import {
   HttpCode,
   UsePipes,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import type { User } from './app.service';
 import { createUserSchema } from './overview/create-user.dto';
 import type { CreateUserDTO } from './overview/create-user.dto';
 import { ValidationPipe } from './overview/validation-pipe';
-import { AuthGuard } from './overview/auth.guard';
+import { AuthGuard } from './overview/auth-guard/auth.guard';
 import { Roles } from './overview/roles.decorator';
+import { LoggingInterceptor } from './overview/logging/logging.interceptor';
 
+@UseInterceptors(LoggingInterceptor)
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
