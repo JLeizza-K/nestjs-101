@@ -1,20 +1,6 @@
-import {
-  Injectable,
-  CanActivate,
-  ExecutionContext,
-  ForbiddenException,
-} from '@nestjs/common';
+import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { Observable } from 'rxjs';
-import { Roles } from './roles.decorator';
-
-function validateRequest(request: any): boolean {
-  if (request === 'admin') {
-    return true;
-  }
-
-  return false;
-}
+import { Roles } from '../roles.decorator';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
