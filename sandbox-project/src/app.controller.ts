@@ -8,17 +8,22 @@ import {
   Query,
   HttpCode,
   UsePipes,
+  UseGuards,
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import type { User } from './app.service';
-import { createUserSchema } from './create-user.dto';
-import type { CreateUserDTO } from './create-user.dto';
-import { ValidationPipe } from './validation-pipe';
+import { createUserSchema } from './overview/create-user.dto';
+import type { CreateUserDTO } from './overview/create-user.dto';
+import { ValidationPipe } from './overview/validation-pipe';
+import { AuthGuard } from './overview/auth.guard';
+import { Roles } from './overview/roles.decorator';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @UseGuards(AuthGuard)
+  @Roles(['administrator'])
   @Get('/academy/*')
   getHello(): string {
     return this.appService.getHello();

@@ -2,9 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { BadRequestException } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { NotFoundException } from './not-found.exception';
-import { ValidationPipe } from './validation-pipe';
-import { createUserSchema } from './create-user.dto';
+import { NotFoundException } from './overview/not-found.exception';
+import { ValidationPipe } from './overview/validation-pipe';
+import { createUserSchema } from './overview/create-user.dto';
 
 describe('AppController', () => {
   let appController: AppController;
