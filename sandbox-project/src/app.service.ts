@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { randomInt } from 'crypto';
 import { NotFoundException } from './not-found.exception';
+import { CreateUserDTO } from './create-user.dto';
 
 export type User = {
   id: number;
@@ -36,14 +37,12 @@ export class AppService {
     return findUser;
   }
 
-  createUser(name: string, email: string, password: number): User {
+  createUser(createUserDTO: CreateUserDTO): User {
     const newId = 5;
 
     const newUser: User = {
       id: newId,
-      name,
-      email,
-      password,
+      ...createUserDTO,
     };
     this.users.push(newUser);
     return newUser;
