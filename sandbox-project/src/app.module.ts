@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { LoggerMiddleware } from './logger/logger.middleware';
+import { LoggerMiddleware } from './overview/middleware/logger.middleware';
 
 @Module({
   imports: [],
