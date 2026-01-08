@@ -1,4 +1,7 @@
+# NestJS Providers & Dependency Injection - Notas
 
+## Dependency Injection en Controllers
+```typescript
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { CatsService } from './cats.service';
@@ -20,3 +23,8 @@ export class CatsController {
     return this.catsService.findAll();
   }
 }
+```
+
+## Constructor Injection
+
+The `CatsService` is injected through the class constructor. Notice the use of the `private` keyword. This shorthand allows us to both declare and initialize the `catsService` member in the same line, streamlining the process.
