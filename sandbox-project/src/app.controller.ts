@@ -17,8 +17,8 @@ import { createUserSchema } from './overview/create-user.dto';
 import type { CreateUserDTO } from './overview/create-user.dto';
 import { ValidationPipe } from './overview/validation-pipe';
 import { AuthGuard } from './overview/auth-guard/auth.guard';
-import { Roles } from './overview/roles.decorator';
-import { LoggingInterceptor } from './overview/logging/logging.interceptor';
+import { Roles } from './overview/roles/roles.decorator';
+import { LoggingInterceptor } from './overview/interceptor/logging.interceptor';
 
 @UseInterceptors(LoggingInterceptor)
 @Controller()
@@ -26,7 +26,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @UseGuards(AuthGuard)
-  @Roles(['administrator'])
+  @Roles('administrator')
   @Get('/academy/*')
   getHello(): string {
     return this.appService.getHello();
