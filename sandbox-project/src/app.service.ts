@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { randomInt } from 'crypto';
-import { NotFoundException } from './not-found.exception';
-import { CreateUserDTO } from './create-user.dto';
+import { NotFoundException } from './overview/not-found.exception';
+import { CreateUserDTO } from './overview/create-user.dto';
 
 export type User = {
   id: number;
