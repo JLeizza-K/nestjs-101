@@ -8,6 +8,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LoggerMiddleware } from './overview/middleware/logger.middleware';
 import { ConfigModule } from './fundamentals/dynamic-modules/config.module';
+import { EggService } from './egg/egg.service';
+import { ChickenService } from './chicken/chicken.service';
 
 const appServiceAliased = {
   provide: 'aliasAppService',
@@ -17,7 +19,7 @@ const appServiceAliased = {
 @Module({
   imports: [ConfigModule.register({environment:'development'})],
   controllers: [AppController],
-  providers: [appServiceAliased],
+  providers: [appServiceAliased, EggService, ChickenService],
 
   exports: [AppService],
 })
