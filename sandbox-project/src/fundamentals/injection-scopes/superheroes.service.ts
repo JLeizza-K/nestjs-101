@@ -1,4 +1,4 @@
-import { Injectable, Scope } from '@nestjs/common';
+aimport { Injectable, Scope } from '@nestjs/common';
 
 export type Superheroe = {
     name : string,
